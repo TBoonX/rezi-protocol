@@ -29,6 +29,7 @@ These mods provide many of the worlds, science packs, mechanics, and progression
 - shchierbin
 - Muria
 - dea-dia-system
+- dea-dia-system-beomyo (Dea Dia 2.1 fork)
 - corrundum
 - apia
 - Moshine
@@ -85,7 +86,7 @@ Thanks also to the authors of optional utility and quality-of-life mods that thi
 visible-planets, StatsGui, shield-projector, turret-activation-delay, LogisticTrainNetwork, LTN_Combinator_Modernized, LtnManager, 
 NapalmArtillery, Noxys_Swimming, bullet-trails, even-distribution, squeak-through-2, robot_attrition, CleanedConcrete, better-victory-screen, 
 Aircraft-space-age, aai-signal-transmission, aai-industry, assembler-group, AutoDeconstruct, combat-mechanics-overhaul, enemy-alert,
-and UPSFriendlyNixieTubeDisplay.
+UPSFriendlyNixieTubeDisplay, and spiderbots-21.
 
 
 Final note

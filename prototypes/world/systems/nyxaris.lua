@@ -17,7 +17,7 @@ PlanetsLib:extend({
     },
 })
 
-if mods["dea-dia-system"] then
+if mods["dea-dia-system-beomyo"] then
 	PlanetsLib:update({
 		{
 			type = "space-location",
@@ -181,7 +181,7 @@ add_connection_if_locations_exist({
 	asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.nauvis_fulgora)
 })
 
-if mods["dea-dia-system"] then
+if mods["dea-dia-system-beomyo"] then
 	add_connection_if_locations_exist({
 		type = "space-connection",
 		name = "sye-nyxaris-dea-dia-system-edge",

@@ -146,6 +146,17 @@ local before = #techs["beetlejuice-discovery"].prerequisites
 weave.data_final_fixes()
 check(#techs["beetlejuice-discovery"].prerequisites == before, "the weave added a link twice")
 
+-- A removed optional world must not leave a phantom prerequisite.
+techs = build()
+techs["planet-discovery-pelagos"] = nil
+data.raw.planet.pelagos = nil
+weave.data_final_fixes()
+for _, gate in ipairs({"vibrant-discovery", "vespera-discovery"}) do
+	check(not requires(techs, gate, "planet-discovery-pelagos")
+		and requires(techs, gate, "planet-discovery-terrapalus"),
+		gate .. " must skip absent Pelagos without skipping other installed worlds")
+end
+
 -- planetary interdependence off: no world is woven
 techs = build()
 rawset(_G, "settings", {startup = {["razi-planetary-interdependence"] = {value = "off"}}})

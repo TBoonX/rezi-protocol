@@ -8,7 +8,7 @@ local caps = {
 	{ "nutrients-spoiling", nil, 0 },
 	-- linox: 150 lava + 50 crude -> 5 coal, the oil processing research pays off at +72 %
 	{ "linox-recipe_rapid-distillation", nil, 0.5 },
-	-- dea-dia-system: slime weed -> fiber + gel -> fiber, both with the slimeweed research (+81 % breaks even)
+	-- Dea Dia: slime weed -> fiber + gel -> fiber, both with the slimeweed research (+81 % breaks even)
 	{ "gel-polymerization", nil, 0 },
 	{ "slime-weed-processing", nil, 2 },
 }

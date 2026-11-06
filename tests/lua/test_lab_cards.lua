@@ -29,6 +29,9 @@ local function build(options)
 	for _, name in ipairs(options.packs) do
 		raw.tool[name] = {type = "tool", name = name}
 	end
+	for _, name in ipairs(options.item_packs or {}) do
+		raw.item[name] = {type = "item", name = name}
+	end
 	for _, name in ipairs(options.technologies) do
 		raw.technology[name] = {type = "technology", name = name, effects = {}}
 	end
@@ -163,6 +166,13 @@ check(vespera_fallback["solaris-tech-card"] == 1 and vespera_fallback["nyxaris-t
 	"Vespera falls back to its two predecessor cards")
 check(raw["item-subgroup"]["system-tech-card"].group == "intermediate-products",
 	"Without Science Tab the subgroup uses the vanilla group")
+
+-- The Dea Dia 2.1 fork defines its science packs as plain items.
+raw = build({packs = {"space-science-pack"}, technologies = technologies,
+	item_packs = {"insulation-science-pack", "thermodynamic-science-pack"}})
+local nyxaris_items = amounts(raw.recipe["nyxaris-tech-card"])
+check(nyxaris_items["insulation-science-pack"] == 1 and nyxaris_items["thermodynamic-science-pack"] == 1,
+	"Nyxaris must accept the Dea Dia fork's item-type science packs")
 
 -- No packs at all: no cards, no errors.
 raw = build({packs = {}, technologies = {}})

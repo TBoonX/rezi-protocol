@@ -1,8 +1,12 @@
 # Razi Protocol
 
+## About This Fork
+
+This fork is my customization of Razi Protocol 3, with the goal of bringing it to completion in a short time. It is also an experiment in how well agentic AI can handle a project of this scale. For more context about the fork and its goals, see [the project situation](docs/custom_finalization/Razi-protocol-3_situation.md).
+
 Razi Protocol is a large progression, compatibility, and starmap overhaul for *Factorio: Space Age* built around a huge Krastorio 2 Spaced Out modpack. Its goal is simple: turn a massive pile of excellent planet mods into one coherent campaign.
 
-Instead of leaving every planet on its own island, Razi Protocol rebuilds the run into a chaptered, multi-system expedition with cleaner discovery flow, system milestone cards, routed enemy themes, better map structure, and a longer late-game path into the intergalactic transceiver finale. When Nexus is installed, its black-hole and Sol content becomes an additional Deep Space branch.
+Instead of leaving every planet on its own island, Razi Protocol rebuilds the run into a chaptered, multi-system expedition with cleaner discovery flow, system milestone cards, routed enemy themes, better map structure, and a longer late-game path into the intergalactic transceiver finale. The required Nexus mod adds its black-hole and Sol content as a Deep Space branch.
 
 ## Why It Exists
 
@@ -24,8 +28,8 @@ Razi Protocol is the layer that turns that chaos into an intentional galaxy rout
 - Rehomes many planets so they sit in a cleaner route and unlock order.
 - Integrates optional Eneas support plus Linox, Muria, and Shchierbin directly into the intended campaign flow.
 - Cleans up a large amount of route clutter from source mods that were not designed around one shared starmap.
-- Reworks endgame flow around the solar-system edge and intergalactic transceiver, with an expanded black-hole route when optional Nexus is installed.
-- Replaces Nexus omega-science clutter with a more readable Deep Space card-driven endgame when Nexus is present.
+- Reworks endgame flow around the solar-system edge and intergalactic transceiver, including the expanded Nexus black-hole route.
+- Replaces Nexus omega-science clutter with a more readable Deep Space card-driven endgame.
 - Routes optional custom enemy mods onto planets that fit their theme, while suppressing default biter noise where appropriate.
 - Adds Science Tab cleanup so system cards, planet science, and research-data items land in more readable groups.
 - Adds Vehicles & Infrastructure as a dedicated crafting tab to reduce early Logistics bloat.
@@ -49,7 +53,7 @@ Solaris is the first major custom-system branch. It brings Castra Prime, Arig, H
 
 ### Nyxaris
 
-Nyxaris is the shared mid-tier chapter. It groups Nyxaris, Apia Carnova, Moshine, and Panglia into one broader progression stage, and absorbs optional Dea Dia, Pelagos and Terra Palus progression when they are installed.
+Nyxaris is the shared mid-tier chapter. It groups Nyxaris, Apia Carnova, Moshine, and Panglia into one broader progression stage, and absorbs optional Dea Dia and Terra Palus progression when they are installed.
 
 ### Vibrant
 
@@ -61,7 +65,7 @@ Beetlejuice is the harsh outer-system chapter. It includes Cubium, Tenebris, Cru
 
 ### Deep Space
 
-Deep Space is the final chapter. Its required route culminates in the intergalactic transceiver chain. Optional Nexus expands that chapter through the black-hole approach, black hole, Oort Cloud, and Sol, while optional Void Processing can add another late branch.
+Deep Space is the final chapter. Its required route culminates in the intergalactic transceiver chain. The required Nexus mod expands that chapter through the black-hole approach, black hole, Oort Cloud, and Sol; visiting Nexus itself remains outside the transceiver's required path. Optional Void Processing can add another late branch.
 
 ## System Cards
 
@@ -85,7 +89,7 @@ Several planets are not just "supported"; they are deliberately placed into the 
 - Bellicos and Aegis retain their complete internal stargate, Warden, asteroid, and pulsar route, but enter the wider campaign from Solaris and Nyxaris. Their original direct Nauvis and Fulgora links are removed to avoid bypassing Razi Protocol's chapter structure.
 
 - Eneas stays an optional early Calidus moon branch when installed.
-- Every installed world is researched before the gateways of the next system, unless Planetary interdependence is Off: worlds of Solaris and Nyxaris (Igrys, Foliax, Velora, Rabbasca, Pelagos, Terra Palus) before Vibrant and Vespera, worlds of Vibrant and Vespera (Cerys, Khemia, Shchierbin, Athos, Nulla) before Beetlejuice and Umbra, worlds of Beetlejuice and Umbra (Ferrum, Carna, Arcanyx, Obsidiax) and Bellicos before Outer Frontier Mastery. Balack, Skewer Shattered, Rabbasca Underground, Eneas and Nexus stay off the required path.
+- Every installed world is researched before the gateways of the next system, unless Planetary interdependence is Off: worlds of Solaris and Nyxaris (Igrys, Foliax, Velora, Rabbasca, Terra Palus) before Vibrant and Vespera, worlds of Vibrant and Vespera (Cerys, Khemia, Shchierbin, Athos, Nulla) before Beetlejuice and Umbra, worlds of Beetlejuice and Umbra (Ferrum, Carna, Arcanyx, Obsidiax) and Bellicos before Outer Frontier Mastery. Balack, Skewer Shattered, Rabbasca Underground, Eneas and Nexus stay off the required path.
 - Muria is integrated into the Vibrant chapter ahead of Aquilo.
 - Shchierbin now branches from Paracelsin instead of hanging directly off the Vibrant slipstream.
 - Linox is moved into Beetlejuice as a later Cubium-side branch.
@@ -96,7 +100,7 @@ These are not cosmetic placements only. Razi Protocol also adjusts their route a
 
 Razi Protocol intentionally provides its own late-game structure.
 
-When Nexus is installed, Razi Protocol hides its omega-science clutter from normal play and swaps its role into a cleaner Deep Space card-driven progression. Without Nexus, the solar-system edge still leads into the transceiver singularity sequence without leaving a missing prerequisite.
+Razi Protocol hides Nexus's omega-science clutter from normal play and swaps its role into a cleaner Deep Space card-driven progression. Nexus is required as a mod, but its planet discovery is not required for the transceiver singularity sequence.
 
 That singularity sequence is a major part of the pack identity:
 
@@ -112,6 +116,8 @@ Optional Void Processing is still supported, but it is treated as a late Deep Sp
 ## Enemy Routing
 
 Razi Protocol supports several optional enemy packs and places each one where its author or the planet's theme says it belongs. Nauvis keeps the vanilla enemies on every difficulty, and planets with enemies of their own (Gleba, Tellus, Lemures with Dea Dia, and so on) are not touched.
+
+Nexus Bosses is required and brings Arachnids, Toxic Biters, and Electric Flying Enemies as dependencies, even though their direct integrations in `info.json` are optional. Balack also requires the `ArmouredBiters-2_1-update` fork; the maintained `ArmouredBiters` mod is a separate optional integration.
 
 How many planets carry the themed families is the `razi-enemy-habitats` startup setting. Automatic, the default, takes the step of the difficulty level; the steps add up:
 
@@ -148,7 +154,7 @@ Razi Protocol is not just a route mod. It is also a cleanup layer for a very bus
 It includes targeted fixes for:
 
 - K2SO transceiver and endgame flow
-- Optional Nexus omega-science replacement
+- Nexus omega-science replacement
 - Science Tab grouping and lab input behavior
 - Vehicles & Infrastructure crafting cleanup
 - `xy-k2so-enhancements-nulls-fork`
@@ -180,29 +186,30 @@ Core content in the intended experience includes:
 - Apia
 - Moshine
 - Panglia
-- Pelagos (optional)
 - Tenebris Prime
 - Secretas
 - Maraxsis
 - Rubia
 - Cubium
-- Nexus (optional)
+- Nexus
 - Vesta
 - Castra Prime
 - Crucible
 - Ribbonia
 - Paracelsin
 
-Optional supported branches include Dea Dia, Pelagos, Nexus, Celestial Weather and its additions, Eneas, Cerys, Void Processing, a range of enemy packs, and a variety of quality-of-life and compatibility helpers listed in `info.json`.
+Optional supported branches include the Dea Dia 2.1 fork, Celestial Weather and its additions, Eneas, Cerys, Void Processing, a range of enemy packs, and a variety of quality-of-life and compatibility helpers listed in `info.json`.
 
-Recommended mods (`+` in `info.json`; the game offers them, nothing breaks without them): Cold Biters, Explosive Biters, Imersite Asteroids, Void Processing (2.1), Science Tab, Lithium Battery, Frozeta: Nuclear Winter, Planet Express, Upgraded Rocket Turrets, Planet Ferrum, Skewer Shattered Planet, Rabbasca Underground and Secretas Orbit Patch.
+The optional `pelagos`, `spidertron-unit-07`, `kr-air-purifier-helper`, `Noxys_Swimming`, and `Tenebris_plants_retexture` mods were removed from the pack: no Factorio 2.1 portal release was available when reviewed on 2026-11-06. Pelagos compatibility and story scaffolding remain dormant and are not part of the supported pack.
+
+Recommended direct dependencies (`+` in `info.json`; another installed mod may make them mandatory): Cold Biters, Explosive Biters, Imersite Asteroids, Void Processing (2.1), Science Tab, Lithium Battery, Frozeta: Nuclear Winter, Planet Express, Upgraded Rocket Turrets, Planet Ferrum, Skewer Shattered Planet, Rabbasca Underground and Secretas Orbit Patch.
 
 ## Modpack Guidance
 
 For the best results:
 
 - Use the dependency list in `info.json` as the source of truth.
-- Updating a save made with 2.x: [docs/updating-from-2x.md](docs/updating-from-2x.md).
+- The existing [2.x update guide](docs/updating-from-2x.md) describes the earlier migration process; migration and upgrade tests for old saves are outside the current Factorio 2.1 work.
 - Install RAZI Library 1.3.1 or newer and Razi More Asteroids 1.1.0 or newer; both are required. The library is the shared foundation used directly by Razi Protocol's data-stage compatibility code, and the asteroid mod supplies the eight asteroid families that Razi Protocol lays out across its systems.
 - Install Razi Rocket Reusability 1.1.5 or newer; it is a required mod now, and the original Rocket Reusability is incompatible with it.
 - Treat unsupported route overhauls as incompatible unless explicitly patched.

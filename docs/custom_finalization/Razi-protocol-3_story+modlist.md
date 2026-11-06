@@ -134,6 +134,8 @@ I would adjust our plan accordingly:
 
 Looking at the [reviewed branch’s `info.json`](https://github.com/Raziphel/razi-protocol/blob/7a0ee5c21e74c5aebf37cddcdac2c43232719d1e/info.json), its dependency list mixes several things:
 
+This is a historical review of that branch. The current Factorio 2.1 decision removed Pelagos and four other optional mods without compatible releases; see the current modpack decision in `Razi-protocol-3_situation.md`.
+
 
 | Declaration | Meaning | Razi examples |
 | --- | --- | --- |

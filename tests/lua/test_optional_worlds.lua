@@ -48,7 +48,7 @@ for _, world in ipairs(roster.worlds) do
 end
 for location, mod in pairs({["rabbasca-underground"] = "rabbasca-underground",
 	skewer_shattered_planet = "skewer_shattered_planet", skewer_lost_beyond = "skewer_shattered_planet",
-	["bm-balack"] = "biological-machines-planet-balack", eneas = "moon-eneas", nexus = "Nexus-Updated"}) do
+	["bm-balack"] = "biological-machines-planet-balack", eneas = "moon-eneas", nexus = "Nexus"}) do
 	check(excluded[location] == mod, location .. " must stay off the path")
 end
 -- Rabbasca is woven: only its packs stay out
@@ -68,10 +68,21 @@ end
 -- Ferrum stays optional, but once installed it is woven and the path may need its pack
 check(dependencies["planet-ferrum"]:match("^[%?%+]"), "planet-ferrum is no longer an optional dependency")
 check(not seen["planet-ferrum"], "Ferrum and its pack are on the path and stay out of the list")
-check(dependencies["Nexus-Updated"] == "Nexus-Updated >= 1.4.1", "Nexus-Updated must be a required dependency")
+check(dependencies["Nexus"] == "Nexus >= 1.3.6", "Nexus must be a required dependency")
 -- `nexus-bosses` is required without a load order (`~`).
-check(dependencies["nexus-bosses"] == "~ nexus-bosses >= 2.4.0",
+check(dependencies["nexus-bosses"] == "~ nexus-bosses >= 2.5.1",
 	"`nexus-bosses` is required without a load order (`~`)")
+check(dependencies["dea-dia-system-beomyo"] == "? dea-dia-system-beomyo >= 0.37.1",
+	"the 2.1 Dea Dia fork must remain optional")
+check(dependencies["ArmouredBiters"] == "? ArmouredBiters >= 2.1.0",
+	"the maintained Armoured Biters must remain optional")
+check(dependencies["spiderbots-21"] == "? spiderbots-21 >= 0.3.3",
+	"the 2.1 Spiderbots fork must remain optional")
+for _, old in ipairs({"Nexus-Updated", "dea-dia-system", "ArmouredBiters21Compat", "spiderbots",
+	"pelagos", "spidertron-unit-07", "kr-air-purifier-helper", "Noxys_Swimming",
+	"Tenebris_plants_retexture"}) do
+	check(not dependencies[old], old .. " must not be a dependency")
+end
 -- Secretas is required and on the path to the final technology
 check(not seen["secretas"], "Secretas is a required dependency and stays out of the list")
 

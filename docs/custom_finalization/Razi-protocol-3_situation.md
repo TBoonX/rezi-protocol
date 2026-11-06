@@ -4,6 +4,12 @@
 
 I reviewed [`feat/razi-3.x` at commit `7a0ee5c`](https://github.com/Raziphel/razi-protocol/tree/7a0ee5c21e74c5aebf37cddcdac2c43232719d1e), the relevant merged PRs, and the current [portal description](https://mods.factorio.com/mod/razi-protocol). This branch differs substantially from the older `feat/razi-3.0` branch we discussed.
 
+## Current Factorio 2.1 modpack decision
+
+On 2026-11-06, the owner chose to remove optional mods without a compatible release rather than replace them with different gameplay. The removed entries are `pelagos`, `spidertron-unit-07`, `kr-air-purifier-helper`, `Noxys_Swimming`, and `Tenebris_plants_retexture`. None is required by the resolved reference dependency graph. Existing Pelagos-specific scaffolding remains dormant; it is not part of the supported pack.
+
+The required deprecated Nexus fork is replaced with the maintained `Nexus` and a compatible Nexus Bosses version. Compatible Dea Dia, Armoured Biters, and Spiderbots successors remain optional. If a truly required mod lacks a suitable successor, choose an alternative together before changing the campaign. Portal metadata establishes declared 2.1 compatibility; the updated pack still needs a real Factorio load check.
+
 ## 1. What already exists
 
 | Portal feature | Evidence in the current code | Assessment |
@@ -352,4 +358,3 @@ Your narrative feedback would use a separate, restricted report format—tone, p
 I would **not combine all these frameworks**. That adds infrastructure and debugging without improving the mod.
 
 **My practical choice:** run one real milestone with the existing app and GitHub Actions first. If you want a reusable, independently operated development system across projects, build the dedicated version with **LangGraph + Deep Agents**, keeping test execution deterministic and human approval explicit. Framework setup would be additional scope beyond the earlier mod-completion estimate.
-

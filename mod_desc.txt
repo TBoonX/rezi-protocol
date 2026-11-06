@@ -8,14 +8,14 @@ Instead of leaving every mod on its own disconnected branch, Razi Protocol:
 - Adds system discovery technologies and system milestone cards.
 - Rehomes many planets so the starmap and tech tree follow one readable route.
 - Integrates optional Eneas support plus Linox, Muria, and Shchierbin into that route instead of leaving them as awkward side content.
-- Replaces Nexus omega-science clutter with a cleaner Deep Space card-driven endgame when optional Nexus is installed.
+- Replaces Nexus omega-science clutter with a cleaner Deep Space card-driven endgame.
 - Pushes the Krastorio intergalactic transceiver into a longer singularity-based finale.
 - Routes optional custom enemy factions onto planets that actually fit their theme.
 - Cleans up Science Tab groupings, overloaded crafting tabs, and several late compatibility seams.
 
-## Updating from 2.x
+## Existing saves
 
-Your 2.x save keeps working in 3.0. Before updating, type `/razi-prepare-3` in the chat and save. Step by step: [Updating a 2.x save](https://github.com/Raziphel/razi-protocol/blob/main/docs/updating-from-2x.md).
+Migration and upgrade tests for old saves are outside the current Factorio 2.1 work. The existing [2.x update guide](https://github.com/Raziphel/razi-protocol/blob/main/docs/updating-from-2x.md) describes the earlier migration process, not a validated path for the current changes.
 
 ## Chapter Flow
 
@@ -33,7 +33,7 @@ The first major custom-system chapter. It connects Castra Prime, Arig, Hyarion, 
 
 ### Nyxaris
 
-The mid-tier science chapter. Apia Carnova, Moshine, and Panglia feed into this stage, with optional Dea Dia and Pelagos folded in when installed.
+The mid-tier science chapter. Apia Carnova, Moshine, and Panglia feed into this stage, with the optional Dea Dia 2.1 fork folded in when installed.
 
 ### Vibrant
 
@@ -45,7 +45,7 @@ The harsh outer-system chapter. Cubium, Tenebris, Crucible, Vesta, Secretas, Fro
 
 ### Deep Space
 
-The final chapter. Its required route culminates in the transceiver finale; optional Nexus adds the black-hole chain, Oort Cloud, and Sol, and optional Void Processing adds another late branch.
+The final chapter. Its required route culminates in the transceiver finale; required Nexus adds the black-hole chain, Oort Cloud, and Sol, and optional Void Processing adds another late branch. Nexus's planet discovery remains outside the required transceiver path.
 
 ## System Cards
 
@@ -77,7 +77,7 @@ These placements are reflected in both the starmap and the related discovery pro
 
 Razi Protocol provides its own late-game shape.
 
-When Nexus is installed, its omega sciences are hidden behind a cleaner Deep Space card route. With or without Nexus, the solar-system edge becomes the bridge into the final chapter and the transceiver is moved later into a singularity research chain:
+Nexus's omega sciences are hidden behind a cleaner Deep Space card route. The solar-system edge becomes the bridge into the final chapter and the transceiver is moved later into a singularity research chain:
 
 - Intergalactic Singularity Theory
 - Intergalactic Singularity Test Fire
@@ -88,7 +88,7 @@ Optional Void Processing is supported as a Deep Space branch rather than forced 
 
 ## Enemy Routing
 
-Supported optional enemy mods can be reassigned to planets that fit their identity, with vanilla biter/worm autoplace suppressed where needed so the custom faction actually defines the planet.
+Supported enemy mods can be reassigned to planets that fit their identity, with vanilla biter/worm autoplace suppressed where needed so the custom faction actually defines the planet. Some are direct optional integrations but are required transitively by Nexus Bosses or Balack.
 
 The `razi-enemy-habitats` startup setting, which the difficulty level sets, chooses how many planets carry them: none on Easy, seven on Normal, ten on Hard and eleven on Nightmare. The `razi-enable-enemy-routing` startup setting can disable this behavior if you want the source mods' original enemy placement instead.
 

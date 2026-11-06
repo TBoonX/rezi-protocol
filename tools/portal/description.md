@@ -15,9 +15,9 @@ Instead of leaving every mod on its own disconnected branch, Razi Protocol:
 - Routes optional custom enemy factions onto planets that actually fit their theme.
 - Cleans up Science Tab groupings, overloaded crafting tabs, and several late compatibility seams.
 
-## Updating from 2.x
+## Existing saves
 
-Your 2.x save keeps working in 3.0. Before updating, type `/razi-prepare-3` in the chat and save. Step by step: [Updating a 2.x save](https://github.com/Raziphel/razi-protocol/blob/main/docs/updating-from-2x.md).
+Migration and upgrade tests for old saves are outside the current Factorio 2.1 work. The existing [2.x update guide](https://github.com/Raziphel/razi-protocol/blob/main/docs/updating-from-2x.md) describes the earlier migration process, not a validated path for the current changes.
 
 ## Chapter Flow
 
@@ -31,7 +31,7 @@ The first major custom-system chapter. It connects Castra Prime, Arig, Hyarion, 
 
 ### Nyxaris
 
-The mid-tier science chapter that also absorbs Dea Dia-style progression. Apia Carnova, Moshine, Panglia, and Pelagos all feed into this stage.
+The mid-tier science chapter that also absorbs Dea Dia-style progression. Apia Carnova, Moshine, and Panglia feed into this stage.
 
 ### Vibrant
 
@@ -86,7 +86,7 @@ Optional Void Processing is supported as a Deep Space branch rather than forced 
 
 ## Enemy Routing
 
-Supported optional enemy mods can be reassigned to planets that fit their identity, with vanilla biter/worm autoplace suppressed where needed so the custom faction actually defines the planet.
+Supported enemy mods can be reassigned to planets that fit their identity, with vanilla biter/worm autoplace suppressed where needed so the custom faction actually defines the planet. Some are direct optional integrations but are required transitively by Nexus Bosses or Balack.
 
 The `razi-enemy-habitats` startup setting, which the difficulty level sets, chooses how many planets carry them: none on Easy, seven on Normal, ten on Hard and eleven on Nightmare. The `razi-enable-enemy-routing` startup setting can disable this behavior if you want the source mods' original enemy placement instead.
 
@@ -104,6 +104,8 @@ Razi Protocol also includes quality-of-life cleanup for large modpacks:
 Razi Protocol is designed for a large dependency stack and expects a big campaign-style setup. Some content is core to the intended route, while other branches remain optional and are treated that way in `info.json`.
 
 If you want the intended experience, use the dependency list in `info.json` as the source of truth and be careful with additional collision-layer-heavy mods.
+
+Pelagos, Spidertron Unit-07, KR air-purifier helper, Noxy's Swimming, and Tenebris Plants Retexture were removed from the optional mod list because no Factorio 2.1 portal releases were available when reviewed on 2026-11-06.
 
 ## Support
 
