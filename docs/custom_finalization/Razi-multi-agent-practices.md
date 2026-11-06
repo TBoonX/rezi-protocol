@@ -13,6 +13,8 @@ The campaign machinery largely exists. Agent work is: **reconcile narrative with
 
 Prefer **existing Copilot coordinated sessions + this repo’s GitHub Actions / FUnit** for the first milestone. A dedicated LangGraph platform is optional later, not a prerequisite.
 
+**Decision (human, 2026-11-06): migrating existing savegames is out of scope.** Do not write migrations, configuration-change repairs or compatibility shims for saves created with earlier versions, and do not test upgrading old saves. IDs, prototypes and research may be changed or reset freely when that simplifies the work. Save/reload **within** a game started on the current version remains in scope (state must persist correctly).
+
 ---
 
 ## Do first (before scaling agents)
@@ -26,7 +28,7 @@ Every milestone needs a written brief before parallel work starts:
 | Goal | One coherent outcome for this slice |
 | Non-goals | Explicit out-of-scope (no new quest engine, no restoring removed hardware unless decided) |
 | Allowed files / ownership | Disjoint paths per lane |
-| Interfaces | Shared APIs, locale keys, migration rules |
+| Interfaces | Shared APIs, locale keys (no save migrations — see decision above) |
 | Success criteria | Numbered, checkable |
 | Stop condition | `BLOCKED:` when inputs conflict; escalate mechanics/scope decisions |
 | Spoiler boundary | What may appear in human-facing reports |
@@ -53,7 +55,7 @@ Keep Journal, quests, projects, systems, Convergence ownership. Deliver:
 
 | Lane | Responsibility |
 | --- | --- |
-| Gameplay | Lua/runtime, gates, integrations, migrations |
+| Gameplay | Lua/runtime, gates, integrations |
 | Narrative / locale | Story slots, glossary, continuity (within canon outline) |
 | Validation | Lua tests, content validators, FUnit / Factorio scenarios |
 
@@ -235,7 +237,7 @@ Two test tracks: **prepared fixtures** (fast regression) and **continuous playth
 - **Gameplay-led:** use real milestones, events, existing GUIs. Never describe actions the mechanics cannot support.  
 - **Restrained delivery:** short milestone messages; longer reading optional in the Journal. Essential objectives understandable without lore.  
 - **Consistent world:** shared outline + glossary; continuity checks across systems.  
-- **Preserve stable IDs;** use migrations for necessary changes. Prefer milestone meaning: discovering a route ≠ arriving; researching a platform ≠ building one; researching Ignition ≠ winning.
+- **Keep IDs consistent** across code, locale and tests (no save migrations needed). Prefer milestone meaning: discovering a route ≠ arriving; researching a platform ≠ building one; researching Ignition ≠ winning.
 
 Authoring files (when filling content): `story-welcome.cfg`, `story-chapters.cfg`, `story-quests.cfg`, `story-records.cfg`, `story-projects.cfg`, `story-finale.cfg` — preserve IDs; extend slot resolution to bypass surfaces rather than adding more one-off localization paths.
 
@@ -244,7 +246,7 @@ Authoring files (when filling content): `story-welcome.cfg`, `story-chapters.cfg
 ## Factorio constraints agents must respect
 
 - Data-stage vs runtime separation (writer commands cannot fully enable data-stage systems at runtime).  
-- Save compatibility and migrations.  
+- Save/reload persistence within the current version (migrating older savegames is out of scope).  
 - Public inter-mod interfaces for telemetry (no guessing private storage).  
 - Campaign state authoritative and event-driven; avoid galaxy-wide scans every tick.  
 - Combine fast Lua tests with real-engine scenarios.
