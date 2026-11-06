@@ -13,7 +13,7 @@ The campaign machinery largely exists. Agent work is: **reconcile narrative with
 
 Prefer **existing Copilot coordinated sessions + this repo’s GitHub Actions / FUnit** for the first milestone. A dedicated LangGraph platform is optional later, not a prerequisite.
 
-**Decision (human, 2026-11-06): migrating existing savegames is out of scope.** Do not write migrations, configuration-change repairs or compatibility shims for saves created with earlier versions, and do not test upgrading old saves. IDs, prototypes and research may be changed or reset freely when that simplifies the work. Save/reload **within** a game started on the current version remains in scope (state must persist correctly).
+**Decision (human): migrating existing savegames is out of scope.** Do not write migrations, configuration-change repairs or compatibility shims for saves created with earlier versions, and do not test upgrading old saves. IDs, prototypes and research may be changed or reset freely when that simplifies the work. Save/reload **within** a game started on the current version remains in scope (state must persist correctly).
 
 ---
 

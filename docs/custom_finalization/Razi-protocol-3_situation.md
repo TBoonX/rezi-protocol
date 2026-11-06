@@ -154,7 +154,7 @@ Extend the existing tests rather than introducing another framework. Cover:
 - story-enabled loading, Archive Array construction and recovery;
 - optional-content combinations.
 
-**Out of scope (decision 2026-11-06):** migrating savegames from earlier versions. No migrations or upgrade tests for old saves are required.
+**Out of scope (decision):** migrating savegames from earlier versions. No migrations or upgrade tests for old saves are required.
 
 ## 4. Factorio development practices that shape this plan
 
@@ -163,7 +163,7 @@ The tutorials and API documentation support this approach:
 | Practice | Application to this mod |
 |---|---|
 | **Respect data-stage/runtime separation** | Prototype descriptions and story-only hardware are created at startup. A per-player writer command cannot fully enable those systems at runtime. Use a consistent startup/release policy. |
-| ~~Preserve save compatibility~~ | **Not required (decision 2026-11-06):** migrating existing savegames is irrelevant for this work. IDs may change; no migrations needed. Save/reload within a current-version game must still work. |
+| ~~Preserve save compatibility~~ | **Not required (decision):** migrating existing savegames is irrelevant for this work. IDs may change; no migrations needed. Save/reload within a current-version game must still work. |
 | **Use public inter-mod interfaces** | Dyson construction telemetry should come from a supported API/event—not guessed private storage. Planet Express currently reads a source GUI caption; a public API would be more robust, though not essential to its present limited display claim. |
 | **Keep campaign state authoritative and event-driven** | Derive completion from research, source boss victories, real construction and deliveries. Store only necessary persistent history; avoid galaxy-wide scans every tick. |
 | **Combine fast tests with real-engine scenarios** | Lua fixtures catch logic regressions; FUnit catches engine/API errors; representative saves and visual checks establish the complete player experience. |
