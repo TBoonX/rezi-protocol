@@ -18,3 +18,7 @@ Use the [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0
 For Factorio mods, coordinate versioned releases with `info.json`, `changelog.txt`, dependencies and Factorio compatibility; do not automatically publish mods from an unverified commit message.
 
 Follow the repository's existing contributing guide, tests, and deployment policy when applicable.
+
+## Multi-agent / Copilot milestone work
+
+For story + campaign completion with coding agents, follow **`docs/multi-agent-practices.md`** (summary) and the clone-root **`docs/custom_finalization/Razi-multi-agent-practices.md`** when present (full practices). Put task-specific procedures in the milestone brief — do not grow this file into a mega-prompt. Mechanics beat stale prose; use the evidence ladder; never treat agent self-review as acceptance.
