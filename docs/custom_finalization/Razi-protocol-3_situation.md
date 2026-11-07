@@ -8,7 +8,22 @@ I reviewed [`feat/razi-3.x` at commit `7a0ee5c`](https://github.com/Raziphel/raz
 
 On 2026-11-06, the owner chose to remove optional mods without a compatible release rather than replace them with different gameplay. The removed entries are `pelagos`, `spidertron-unit-07`, `kr-air-purifier-helper`, `Noxys_Swimming`, and `Tenebris_plants_retexture`. None is required by the resolved reference dependency graph. Existing Pelagos-specific scaffolding remains dormant; it is not part of the supported pack.
 
-The required deprecated Nexus fork is replaced with the maintained `Nexus` and a compatible Nexus Bosses version. Compatible Dea Dia, Armoured Biters, and Spiderbots successors remain optional. If a truly required mod lacks a suitable successor, choose an alternative together before changing the campaign. Portal metadata establishes declared 2.1 compatibility; the updated pack still needs a real Factorio load check.
+The required deprecated Nexus fork is replaced with the maintained `Nexus` and a compatible Nexus Bosses version. Compatible Dea Dia, Armoured Biters, and Spiderbots successors remain optional. If a truly required mod lacks a suitable successor, choose an alternative together before changing the campaign. Portal metadata establishes declared 2.1 compatibility; the Normal startup evidence below is the subsequent real-game check.
+
+**Prerequisite before story milestones:** pin the reference pack and run it in an isolated Factorio installation or data directory on Normal. Other difficulty presets are out of scope for this gate. Verify new-game startup, post-tick save/reload and the existing FUnit scenarios, first with the release story switch off and then with it enabled in a separate test copy before startup. Record the precise versions, settings and results; a missing dependency or failed check blocks story milestones. The full procedure and evidence limits are in `Razi-multi-agent-practices.md`, section 0.
+
+### Normal startup baseline — 2026-11-07
+
+Factorio and Space Age **2.1.24**, gameplay code revision `b7475d160595469811bda6281d681fb07786e8ca`: the [reference lock](reference-mods-normal-factorio-2.1.24.lock.json) records 183 production mod archives plus FUnit as a test-only extra. Its LF-normalized SHA-256 is `3a68be49caa9ff24f6da7c060eed443e0258bff4df7d115ce10c5339d9b54cd1`; the load harness's semantic lock key is `c7d898e4f33be0c72f34`. The working tree also had documentation and FUnit test changes; story-on runs used a separate gameplay copy with the switch enabled.
+
+| Normal story mode | New game and 60 ticks | Post-tick save/reload | Repository FUnit suite |
+| --- | --- | --- | --- |
+| Off | Passed | Passed | 13/13 passed |
+| On, test copy | Passed | Passed | 13/13 passed |
+
+The original story-on FUnit run passed 12/13: one test explicitly required the story to be off. That test was updated to check the correct behavior in both modes, and the repository suite was rerun on Normal in both modes. The save/reload probe verified a persisted tick-60 marker; it did not prove campaign-state recovery. The existing `tests/load/run.sh` does not itself enable the story or produce the post-tick save; those checks used a separate copy and probe, with logs retained in the session artifacts.
+
+The resolver does not follow optional dependency edges, but five mods that Razi lists as optional were pulled in through other selected dependencies: `mferrari_lib`, `Arachnids_enemy`, `Electric_flying_enemies`, `Toxic_biters` and `planet-rabbasca`. Consequently this reference run does not establish behavior without optional worlds or enemies. Startup also does not establish campaign reachability, balance or story quality.
 
 ## 1. What already exists
 
@@ -286,7 +301,7 @@ The first milestone should establish the working test environment, agree on narr
 - **Spoiler-free collaboration:** ask you about tone, pacing, complexity and player experience—not plot details. Report narrative quality and implementation status without revealing developments.
 - **Bounded autonomy:** agents work independently within approved milestones; major changes to premise, mechanics or scope require your decision.
 
-**Development sequence:** functional backlog and test baseline → one playable system slice → successive systems → cross-system progression and finale. Gameplay, writing and testing agents work in parallel where independent, with integration checks before each milestone is accepted.
+**Development sequence:** reference modpack startup gate → functional backlog and test baseline → one playable system slice → successive systems → cross-system progression and finale. Gameplay, writing and testing agents work in parallel where independent, with integration checks before each milestone is accepted.
 
 -------------------
 

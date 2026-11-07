@@ -19,6 +19,18 @@ Prefer **existing Copilot coordinated sessions + this repo’s GitHub Actions / 
 
 ## Do first (before scaling agents)
 
+### 0. Verify the reference modpack before story milestones
+
+The revised Factorio 2.1 pack must start in the actual game before work on the first playable story slice. An older successful CI run is not evidence that the revised pack loads.
+
+1. Select the reference configuration and retain its exact resolved mod names, versions and hashes, including transitive dependencies. Record the Factorio and Space Age versions, repository revision and working-tree state, and startup settings. The existing load harness follows required, `~` and recommended `+` dependency edges, but not `?` optional edges. A mod listed as optional may still enter through another selected mod's dependencies; record those cases and any deliberate variation. Removed incompatible optional mods stay out of the reference pack.
+2. Use an isolated test directory, not the player's normal mods, configuration or saves. On the `normal` Razi difficulty preset, create a new game, run it for at least 60 ticks, and save and reload after ticks have elapsed. Record errors and exit status. The existing benchmark reloads the newly created save; it does not by itself prove a save made after those ticks reloads. Other difficulty presets are out of scope for this gate.
+3. Run the existing FUnit smoke scenarios on Normal and inspect their machine-readable reports. Record the actual test counts and failures, not just the game process exit code.
+4. Repeat the load, post-tick save/reload and FUnit checks with the story enabled **before Factorio starts**. The current story switch is `ENABLED` in `lib/story.lua`, not a startup setting: change it only in an isolated test copy, verify that copy has the switch on, and leave the working tree's release switch untouched. This check is not approval to show unfinished story content to normal players.
+5. Preserve the resolved lock, settings, logs and results with the baseline evidence. A missing required dependency, startup error, failed reload or failed test is `BLOCKED`; resolve it before story milestones proceed. If a truly required mod has no suitable successor, choose an alternative with the human rather than silently changing the campaign.
+
+This establishes **Factorio-tested startup**, not campaign reachability, balance, story quality or human acceptance. Old-save upgrades remain out of scope; save/reload within the tested current-version game remains required.
+
 ### 1. Contract before agents
 
 Every milestone needs a written brief before parallel work starts:
@@ -67,7 +79,7 @@ Keep Journal, quests, projects, systems, Convergence ownership. Deliver:
 
 Order:
 
-1. Functional backlog + test baseline  
+1. Reference modpack startup gate (section 0), then functional backlog + test baseline
 2. **One** playable system slice (e.g. first system → expansion → one physical project → Archive payoff)  
 3. Successive systems  
 4. Cross-system progression and finale  

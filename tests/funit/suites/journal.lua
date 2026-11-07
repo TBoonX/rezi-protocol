@@ -7,6 +7,7 @@ local window = require("__razi-protocol__.scripts.journal.window")
 require("__razi-protocol__.scripts.journal.project_state")
 local projects = require("__razi-protocol__.scripts.journal.project_api")
 local great_projects = require("__razi-protocol__.scripts.projects.great_projects")
+local story = require("__razi-protocol__.lib.story")
 
 return function(runner)
 	-- A mock accepts any caption, style or sprite; the game refuses a wrong one.
@@ -25,13 +26,18 @@ return function(runner)
 		end)
 	end
 
-	-- The storyline is off in the shipped mod, so the Archive relay prototype does not exist, as in writer mode.
-	-- Asking the game for an entity that does not exist is an error (03.11), so the project must not ask.
-	runner.test("the Archive Array project reports zero without the relay prototype", function()
+	-- Counting a missing prototype is an engine error, so cover both startup modes.
+	runner.test("the Archive Array project reports zero before relay construction", function()
 		local force = game.players[1].force
-		runner.assert(not prototypes.entity["razi-archive-relay"], "the relay prototype exists; this test needs the storyline off")
-		runner.assert(not pcall(function() return force.get_entity_count("razi-archive-relay") end),
-			"the game accepts a count of an unknown entity; the guard is not needed")
+		local enabled = story.enabled()
+		runner.assert((prototypes.entity["razi-archive-relay"] ~= nil) == enabled,
+			"the relay prototype does not match the story mode")
+		local count_ok, count = pcall(function() return force.get_entity_count("razi-archive-relay") end)
+		if enabled then
+			runner.assert(count_ok and count == 0, "the story-enabled relay count should start at zero")
+		else
+			runner.assert(not count_ok, "the game accepts a count of an unknown entity; the guard is not needed")
+		end
 		local built, wanted, sites = projects.status_for(force, "array")
 		runner.assert(built == 0 and wanted == 3, "array reports " .. tostring(built) .. " of " .. tostring(wanted))
 		runner.assert(type(sites) == "table" and #sites == 0, "array reports sites")

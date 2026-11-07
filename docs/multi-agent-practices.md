@@ -18,6 +18,7 @@ Prefer **existing Copilot coordinated sessions + this repo’s GitHub Actions / 
 
 ## Do first
 
+0. **Reference modpack startup gate** — before story milestones, pin the resolved Factorio 2.1 pack and settings; use isolated game data to test new-game startup, post-tick save/reload and FUnit on Normal, both with the release story switch off and with it enabled in a separate test copy. Other difficulty presets are out of scope. Preserve the lock and results; block on missing dependencies or failures. See the full practices for details.
 1. **Contract before agents** — milestone brief: goal, non-goals, allowed files, interfaces, numbered success criteria, stop/`BLOCKED`, spoiler boundary.  
 2. **Mechanics win over prose** — precedence: runtime evidence → current code → portal → old locale. Do not restore removed hardware without an explicit decision.  
 3. **Do not rebuild the quest engine** — Journal/quests/projects/Convergence stay; deliver slots, bypass connections, campaign proof.  
